@@ -14,6 +14,23 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+    // Mobile Sidebar Toggle
+    const sidebarToggle = document.getElementById('sidebarToggle');
+    const adminSidebar = document.getElementById('adminSidebar');
+    const sidebarOverlay = document.getElementById('sidebarOverlay');
+
+    if (sidebarToggle && adminSidebar && sidebarOverlay) {
+        sidebarToggle.addEventListener('click', () => {
+            adminSidebar.classList.add('show');
+            sidebarOverlay.classList.add('show');
+        });
+
+        sidebarOverlay.addEventListener('click', () => {
+            adminSidebar.classList.remove('show');
+            sidebarOverlay.classList.remove('show');
+        });
+    }
+
     // Helper for basic HTML escaping in admin tables
     window.escapeHtml = function(unsafe) {
         if (!unsafe) return '';

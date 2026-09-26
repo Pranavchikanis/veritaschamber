@@ -26,61 +26,72 @@
 </head>
 
 <!-- Admin Sidebar -->
-<div th:fragment="adminSidebar(activeItem)" class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark sidebar" style="width: 250px; min-height: 100vh;">
-    <a href="/admin/dashboard" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+<th:block th:fragment="adminSidebar(activeItem)">
+    <!-- Mobile topbar -->
+    <div class="d-md-none d-flex align-items-center bg-dark text-white p-3 fixed-top shadow-sm" style="z-index: 1040; height: 60px;">
+        <button id="sidebarToggle" class="btn btn-dark text-white me-3 border-0 bg-transparent p-0 shadow-none"><i class="fa-solid fa-bars fs-4"></i></button>
         <span class="fs-5 fw-bold" style="font-family: 'Libre Baskerville', serif;">Veritas Chambers</span>
-    </a>
-    <hr>
-    <ul class="nav nav-pills flex-column mb-auto">
-        <li class="nav-item">
-            <a href="/admin/dashboard" class="nav-link text-white" th:classappend="${activeItem == 'dashboard'} ? 'active' : ''">
-                <i class="fa-solid fa-gauge me-2"></i> Dashboard
-            </a>
-        </li>
-        <li>
-            <a href="/admin/consultations" class="nav-link text-white" th:classappend="${activeItem == 'consultations'} ? 'active' : ''">
-                <i class="fa-solid fa-calendar-check me-2"></i> Consultations
-            </a>
-        </li>
-        <li>
-            <a href="/admin/contact-messages" class="nav-link text-white" th:classappend="${activeItem == 'contact-messages'} ? 'active' : ''">
-                <i class="fa-solid fa-envelope me-2"></i> Contact Messages
-            </a>
-        </li>
-        <li>
-            <a href="/admin/practice-areas" class="nav-link text-white" th:classappend="${activeItem == 'practice-areas'} ? 'active' : ''">
-                <i class="fa-solid fa-scale-balanced me-2"></i> Practice Areas
-            </a>
-        </li>
-        <li>
-            <a href="/admin/articles" class="nav-link text-white" th:classappend="${activeItem == 'articles'} ? 'active' : ''">
-                <i class="fa-solid fa-newspaper me-2"></i> Legal Insights
-            </a>
-        </li>
-        <li>
-            <a href="/admin/faqs" class="nav-link text-white" th:classappend="${activeItem == 'faqs'} ? 'active' : ''">
-                <i class="fa-solid fa-circle-question me-2"></i> FAQs
-            </a>
-        </li>
-
-        <li>
-            <a href="/admin/settings" class="nav-link text-white" th:classappend="${activeItem == 'settings'} ? 'active' : ''">
-                <i class="fa-solid fa-gear me-2"></i> Settings
-            </a>
-        </li>
-    </ul>
-    <hr>
-    <div class="dropdown">
-        <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-            <i class="fa-solid fa-user-circle fs-4 me-2"></i>
-            <strong id="admin-user-name">Admin</strong>
-        </a>
-        <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
-            <li><a class="dropdown-item" href="/" target="_blank">View Public Site</a></li>
-            <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="#" id="logout-btn">Sign out</a></li>
-        </ul>
     </div>
-</div>
+    
+    <!-- Sidebar Overlay -->
+    <div id="sidebarOverlay" class="sidebar-overlay d-md-none"></div>
+
+    <div id="adminSidebar" class="d-flex flex-column flex-shrink-0 p-3 text-white bg-dark sidebar" style="width: 250px; min-height: 100vh;">
+        <a href="/admin/dashboard" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+            <span class="fs-5 fw-bold" style="font-family: 'Libre Baskerville', serif;">Veritas Chambers</span>
+        </a>
+        <hr>
+        <ul class="nav nav-pills flex-column mb-auto">
+            <li class="nav-item">
+                <a href="/admin/dashboard" class="nav-link text-white" th:classappend="${activeItem == 'dashboard'} ? 'active' : ''">
+                    <i class="fa-solid fa-gauge me-2"></i> Dashboard
+                </a>
+            </li>
+            <li>
+                <a href="/admin/consultations" class="nav-link text-white" th:classappend="${activeItem == 'consultations'} ? 'active' : ''">
+                    <i class="fa-solid fa-calendar-check me-2"></i> Consultations
+                </a>
+            </li>
+            <li>
+                <a href="/admin/contact-messages" class="nav-link text-white" th:classappend="${activeItem == 'contact-messages'} ? 'active' : ''">
+                    <i class="fa-solid fa-envelope me-2"></i> Contact Messages
+                </a>
+            </li>
+            <li>
+                <a href="/admin/practice-areas" class="nav-link text-white" th:classappend="${activeItem == 'practice-areas'} ? 'active' : ''">
+                    <i class="fa-solid fa-scale-balanced me-2"></i> Practice Areas
+                </a>
+            </li>
+            <li>
+                <a href="/admin/articles" class="nav-link text-white" th:classappend="${activeItem == 'articles'} ? 'active' : ''">
+                    <i class="fa-solid fa-newspaper me-2"></i> Legal Insights
+                </a>
+            </li>
+            <li>
+                <a href="/admin/faqs" class="nav-link text-white" th:classappend="${activeItem == 'faqs'} ? 'active' : ''">
+                    <i class="fa-solid fa-circle-question me-2"></i> FAQs
+                </a>
+            </li>
+
+            <li>
+                <a href="/admin/settings" class="nav-link text-white" th:classappend="${activeItem == 'settings'} ? 'active' : ''">
+                    <i class="fa-solid fa-gear me-2"></i> Settings
+                </a>
+            </li>
+        </ul>
+        <hr>
+        <div class="dropdown">
+            <a href="#" class="d-flex align-items-center text-white text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="fa-solid fa-user-circle fs-4 me-2"></i>
+                <strong id="admin-user-name">Admin</strong>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-dark text-small shadow" aria-labelledby="dropdownUser1">
+                <li><a class="dropdown-item" href="/" target="_blank">View Public Site</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#" id="logout-btn">Sign out</a></li>
+            </ul>
+        </div>
+    </div>
+</th:block>
 
 </html>
