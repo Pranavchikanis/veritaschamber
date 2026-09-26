@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: veritas-chambers
+  profiles:
+    active: dev
+
+server:
+  max-http-header-size: 65536

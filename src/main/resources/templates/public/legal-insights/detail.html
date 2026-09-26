@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head :: head('Article | Veritas Chambers')}"></head>
+<body class="d-flex flex-column min-vh-100" th:attr="data-slug=${slug}">
+    <a href="#main-content" class="skip-to-content">Skip to main content</a>
+    <div th:replace="~{fragments/header :: header}"></div>
+
+    <main id="main-content" class="flex-grow-1">
+        
+        <!-- Header -->
+        <section class="vc-section bg-light py-5">
+            <div class="container py-4 vc-content-narrow">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-4">
+                        <li class="breadcrumb-item"><a href="/" class="text-decoration-none text-muted">Home</a></li>
+                        <li class="breadcrumb-item"><a href="/legal-insights" class="text-decoration-none text-muted">Legal Insights</a></li>
+                        <li class="breadcrumb-item active" aria-current="page" id="breadcrumb-category">Category</li>
+                    </ol>
+                </nav>
+                <h1 class="display-5 fw-bold mb-4" style="font-family: var(--vc-font-serif);" id="article-title">Title</h1>
+                
+                <div class="d-flex align-items-center text-muted d-none" id="article-meta">
+                    <span id="article-date">Date</span>
+                    <span class="mx-3">&bull;</span>
+                    <span id="article-category">Category</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- Content -->
+        <section class="vc-section">
+            <div class="container py-5 vc-content-narrow" id="article-container">
+                <div class="text-center py-5" id="article-loading">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
+
+                <div id="article-content-wrapper" class="d-none">
+                    
+                    <p class="lead mb-5 pb-4 border-bottom" id="article-excerpt">Excerpt</p>
+                    
+                    <!-- Rich HTML Content -->
+                    <div class="article-content" id="article-content" style="line-height: 1.8; font-size: 1.1rem; color: var(--vc-text-main);"></div>
+                    
+                    <!-- Disclaimer -->
+                    <div class="mt-5 p-4 bg-light text-muted small rounded" style="border-left: 3px solid var(--vc-primary);">
+                        <strong>Disclaimer:</strong> The information provided in this article does not, and is not intended to, constitute legal advice; instead, all information, content, and materials available are for general informational purposes only. Readers should contact an attorney to obtain advice with respect to any particular legal matter.
+                    </div>
+                    
+                    <!-- Author Bio -->
+                    <div class="mt-5 border-top pt-5">
+                        <h3 class="h6 text-uppercase text-muted fw-bold mb-3" style="letter-spacing: 1px;">Written By</h3>
+                        <div class="d-flex align-items-center">
+                            <div class="bg-secondary rounded-circle me-3 d-flex align-items-center justify-content-center text-white" style="width: 50px; height: 50px; font-size: 0.7rem;">
+                                [IMG]
+                            </div>
+                            <div>
+                                <h4 class="h6 mb-1">Dhiraj Sawant</h4>
+                                <p class="text-muted small mb-0">Advocate, High Court | Veritas Chambers</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+
+                <div id="article-error" class="vc-alert vc-alert-danger d-none">
+                    Article is currently unavailable.
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <div th:replace="~{fragments/footer :: footer}"></div>
+
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script defer th:src="@{/js/api.js}"></script>
+    <script defer th:src="@{/js/main.js}"></script>
+    <script defer th:src="@{/js/components/navigation.js}"></script>
+    <script defer th:src="@{/js/pages/article-detail.js}"></script>
+</body>
+</html>

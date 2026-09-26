@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<footer th:fragment="footer" class="vc-footer bg-primary text-white py-5">
+    <div class="container">
+        <div class="row g-4">
+            <!-- Brand & Intro -->
+            <div class="col-lg-4 mb-4 mb-lg-0">
+                <a th:href="@{/}" class="text-white text-decoration-none d-block mb-3 vc-logo-footer">
+                    Veritas Chambers
+                </a>
+                <p class="text-white-50">
+                    An elite, disciplined legal practice grounded in truth, facts, integrity, and strategic counsel.
+                </p>
+            </div>
+            
+            <!-- Quick Links -->
+            <div class="col-lg-2 col-md-6 mb-4 mb-lg-0">
+                <h5 class="text-white mb-3 text-uppercase fs-7 tracking-wide">Quick Links</h5>
+                <ul class="list-unstyled vc-footer-links">
+                    <li class="mb-2"><a th:href="@{/about}">Lawyer Profile</a></li>
+                    <li class="mb-2"><a th:href="@{/practice-areas}">Practice Areas</a></li>
+                    <li class="mb-2"><a th:href="@{/legal-insights}">Legal Insights</a></li>
+                    <li class="mb-2"><a th:href="@{/faq}">FAQ</a></li>
+                </ul>
+            </div>
+            
+            <!-- Contact Info -->
+            <div class="col-lg-3 col-md-6 mb-4 mb-lg-0">
+                <h5 class="text-white mb-3 text-uppercase fs-7 tracking-wide">Contact Us</h5>
+                <ul class="list-unstyled text-white-50">
+                    <li class="mb-2">
+                        <a href="tel:+918983512124" class="text-white text-decoration-none">
+                            <strong>+91 89835 12124</strong>
+                        </a>
+                    </li>
+                    <li class="mb-2">contact@veritaschambers.in</li>
+                    <li class="mb-2">Opposite building of Vijay Nagar Court, below Aurum Films, Ground Floor, Sangli.</li>
+                </ul>
+            </div>
+            
+            <!-- Action -->
+            <div class="col-lg-3 col-md-12">
+                <h5 class="text-white mb-3 text-uppercase fs-7 tracking-wide">Legal Counsel</h5>
+                <p class="text-white-50 mb-3">Request a consultation with our experts.</p>
+                <a th:href="@{/contact}" class="btn btn-outline-light w-100 vc-btn-secondary">Request Consultation</a>
+            </div>
+        </div>
+        
+        <hr class="my-4 border-secondary opacity-25">
+        
+        <!-- Bottom Bar -->
+        <div class="row align-items-center">
+            <div class="col-md-6 text-center text-md-start mb-3 mb-md-0 text-white-50 small">
+                &copy; <span th:text="${#dates.format(#dates.createNow(), 'yyyy')}">2026</span> Veritas Chambers. All rights reserved.
+            </div>
+            <div class="col-md-6 text-center text-md-end">
+                <ul class="list-inline mb-0 small">
+                    <li class="list-inline-item"><a th:href="@{/legal/privacy-policy}" class="text-white-50 text-decoration-none">Privacy Policy</a></li>
+                    <li class="list-inline-item text-white-50 mx-2">&middot;</li>
+                    <li class="list-inline-item"><a th:href="@{/legal/terms-and-conditions}" class="text-white-50 text-decoration-none">Terms & Conditions</a></li>
+                    <li class="list-inline-item text-white-50 mx-2">&middot;</li>
+                    <li class="list-inline-item"><a th:href="@{/legal/disclaimer}" class="text-white-50 text-decoration-none">Disclaimer</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Chatbot Component -->
+    <div th:replace="~{fragments/chatbot :: chatbot}"></div>
+
+    <!-- Chatbot Logic -->
+    <script defer th:src="@{/js/components/chatbot.js}"></script>
+</footer>
+
+</body>
+</html>

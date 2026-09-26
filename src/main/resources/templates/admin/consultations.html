@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{admin/fragments/admin-fragments :: adminHead('Consultations | Veritas Chambers Admin')}"></head>
+<body>
+    
+    <div th:replace="~{admin/fragments/admin-fragments :: adminSidebar('consultations')}"></div>
+
+    <main>
+        <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+            <h1 class="h2">Consultation Requests</h1>
+        </div>
+
+        <div id="loading" class="text-center py-5">
+            <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+
+        <div id="content" class="d-none">
+            
+            <div class="card shadow-sm border-0 mb-4">
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle mb-0">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Date</th>
+                                    <th>Name</th>
+                                    <th>Contact</th>
+                                    <th>Subject</th>
+                                    <th>Status</th>
+                                    <th class="text-end">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="data-table-body">
+                                <!-- Rows injected here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <nav aria-label="Page navigation" id="pagination-container" class="d-none">
+                <ul class="pagination justify-content-center" id="pagination-ul">
+                    <!-- Pagination injected here -->
+                </ul>
+            </nav>
+
+        </div>
+
+        <!-- View/Edit Modal -->
+        <div class="modal fade" id="itemModal" tabindex="-1" aria-labelledby="itemModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content border-0 shadow">
+                    <div class="modal-header">
+                        <h5 class="modal-title fw-bold" id="itemModalLabel">Consultation Details</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body bg-light">
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label class="text-muted small text-uppercase">Name</label>
+                                <p class="fw-bold mb-0" id="modal-name"></p>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="text-muted small text-uppercase">Submitted At</label>
+                                <p class="mb-0" id="modal-date"></p>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label class="text-muted small text-uppercase">Email</label>
+                                <p class="mb-0"><a href="#" id="modal-email"></a></p>
+                            </div>
+                            <div class="col-md-6">
+                                <label class="text-muted small text-uppercase">Phone</label>
+                                <p class="mb-0" id="modal-phone"></p>
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label class="text-muted small text-uppercase">Preferred Method</label>
+                                <p class="mb-0" id="modal-method"></p>
+                            </div>
+                        </div>
+                        
+                        <div class="card border-0 mb-3">
+                            <div class="card-body">
+                                <label class="text-muted small text-uppercase mb-2">Subject</label>
+                                <p class="fw-bold mb-3" id="modal-subject"></p>
+                                
+                                <label class="text-muted small text-uppercase mb-2">Message</label>
+                                <div class="bg-light p-3 rounded" style="white-space: pre-wrap;" id="modal-message"></div>
+                            </div>
+                        </div>
+
+                        <form id="status-form">
+                            <input type="hidden" id="modal-id">
+                            <div class="mb-3">
+                                <label for="modal-status" class="form-label text-muted small text-uppercase">Update Status</label>
+                                <select class="form-select" id="modal-status">
+                                    <option value="NEW">New</option>
+                                    <option value="IN_PROGRESS">In Progress</option>
+                                    <option value="CLOSED">Closed</option>
+                                </select>
+                            </div>
+                            <button type="submit" class="btn btn-primary" id="save-status-btn">Save Changes</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script th:src="@{/js/api.js}"></script>
+    <script th:src="@{/js/admin/admin-core.js}"></script>
+    <script th:src="@{/js/admin/consultations.js}"></script>
+</body>
+</html>

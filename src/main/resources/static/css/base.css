@@ -1,0 +1,109 @@
+/* 
+ * base.css
+ * Core design tokens and global resets for Veritas Chambers
+ */
+
+:root {
+  /* Colors */
+  --vc-primary: #0F172A;
+  --vc-bg-surface: #FAFAF9;
+  --vc-text-main: #1E293B;
+  --vc-text-muted: #64748B;
+  --vc-accent: #D4AF37;
+  --vc-border: #E2E8F0;
+
+  /* Typography */
+  --vc-font-serif: 'Playfair Display', serif;
+  --vc-font-sans: 'Inter', sans-serif;
+
+  /* Spacing Scale (rem-based) */
+  --vc-space-xs: 0.5rem;   /* 8px */
+  --vc-space-sm: 1rem;     /* 16px */
+  --vc-space-md: 2rem;     /* 32px */
+  --vc-space-lg: 4rem;     /* 64px */
+  --vc-space-xl: 8rem;     /* 128px */
+
+  /* UI Elements */
+  --vc-radius: 2px;        /* Very subtle, architectural edges */
+  --vc-shadow-subtle: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  --vc-transition: all 0.3s ease-in-out;
+}
+
+body {
+  font-family: var(--vc-font-sans);
+  color: var(--vc-text-main);
+  background-color: var(--vc-bg-surface);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6, 
+.vc-font-serif {
+  font-family: var(--vc-font-serif);
+  color: var(--vc-primary);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+a {
+  color: var(--vc-primary);
+  transition: var(--vc-transition);
+}
+
+a:hover {
+  color: var(--vc-accent);
+}
+
+/* Utilities */
+.bg-surface {
+  background-color: var(--vc-bg-surface) !important;
+}
+
+.text-primary {
+  color: var(--vc-primary) !important;
+}
+
+.text-accent {
+  color: var(--vc-accent) !important;
+}
+
+.tracking-wide {
+  letter-spacing: 0.05em;
+}
+
+.fs-7 {
+  font-size: 0.875rem;
+}
+
+/* Accessibility Focus States */
+:focus-visible {
+  outline: 2px solid var(--vc-accent) !important;
+  outline-offset: 2px;
+}
+
+.skip-to-content {
+  position: absolute;
+  top: 0;
+  transform: translateY(-100%);
+  left: 0;
+  background: var(--vc-primary);
+  color: white;
+  padding: 8px;
+  z-index: 10000;
+  transition: transform 0.2s ease-in-out;
+}
+
+.skip-to-content:focus {
+  transform: translateY(0);
+}
+
+/* Reduced Motion Preference */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

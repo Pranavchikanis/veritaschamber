@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<div th:fragment="chatbot">
+    <!-- Chat Launcher -->
+    <button type="button" id="vc-chatbot-launcher" class="vc-chatbot-launcher" aria-label="Open Veritas Chambers Assistant" aria-expanded="false" aria-controls="vc-chatbot-panel">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 14H5.2L4 17.2V4h16v12z"/>
+        </svg>
+    </button>
+
+    <!-- Chat Panel -->
+    <div id="vc-chatbot-panel" class="vc-chatbot-panel" role="dialog" aria-labelledby="vc-chatbot-title" aria-modal="false" aria-hidden="true">
+        
+        <!-- Header -->
+        <div class="vc-chatbot-header">
+            <h2 id="vc-chatbot-title" class="vc-chatbot-title">Veritas Chambers Assistant</h2>
+            <button type="button" id="vc-chatbot-close" class="vc-chatbot-close" aria-label="Close chat">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Messages Area -->
+        <div id="vc-chatbot-messages" class="vc-chatbot-messages" role="log" aria-live="polite">
+            <div class="vc-chatbot-welcome">
+                <p class="mb-0">Welcome. I can assist with general firm information and publicly available legal insights.</p>
+            </div>
+            <!-- Dynamic messages will be appended here -->
+        </div>
+
+        <!-- Disclaimer Banner (Hidden by default) -->
+        <div id="vc-chatbot-disclaimer" class="vc-chatbot-disclaimer">
+            This information is for general guidance and does not constitute formal legal advice or establish an attorney-client relationship.
+        </div>
+
+        <!-- Input Area -->
+        <form id="vc-chatbot-form" class="vc-chatbot-input-area" novalidate>
+            <div class="vc-chatbot-textarea-container">
+                <textarea id="vc-chatbot-input" class="vc-chatbot-textarea" rows="1" maxlength="1000" placeholder="Type your message..." aria-label="Chat message input"></textarea>
+                <button type="submit" id="vc-chatbot-send" class="vc-chatbot-send" aria-label="Send message">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/>
+                    </svg>
+                </button>
+            </div>
+            <p class="vc-chatbot-footer-text">Veritas Chambers Assistant. Please do not submit confidential information.</p>
+        </form>
+
+    </div>
+</div>
+
+</body>
+</html>

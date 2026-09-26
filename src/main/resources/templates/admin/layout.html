@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{admin/fragments/admin-fragments :: adminHead(${pageTitle})}"></head>
+<body>
+    
+    <div th:replace="~{admin/fragments/admin-fragments :: adminSidebar(${activeNav})}"></div>
+
+    <main class="bg-light min-vh-100">
+        <!-- Top bar -->
+        <header class="d-flex justify-content-between align-items-center py-3 mb-4 border-bottom">
+            <h1 class="h3 mb-0 text-gray-800" th:text="${pageTitle}">Dashboard</h1>
+            <div id="global-spinner" class="spinner-border spinner-border-sm text-primary d-none" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </header>
+
+        <div id="content-area">
+            <!-- Specific page content will be injected here via layout dialect if used, or we just copy this structure for each page. Wait, without layout dialect, I should probably just include the head and sidebar in each page. Let's do that to avoid layout dialect dependency. -->
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script th:src="@{/js/api.js}"></script>
+    <script th:src="@{/js/admin/admin-core.js}"></script>
+</body>
+</html>

@@ -1,0 +1,316 @@
+/* 
+ * chatbot.css
+ * Styles for the Veritas Chambers Website Chatbot
+ */
+
+.vc-chatbot-launcher {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: var(--vc-primary);
+    color: white;
+    border: none;
+    box-shadow: 0 4px 12px rgba(15, 23, 42, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 1040; /* Just below Bootstrap modals (1050) */
+    transition: var(--vc-transition);
+}
+
+.vc-chatbot-launcher:hover {
+    background-color: #1a253c;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(15, 23, 42, 0.3);
+}
+
+.vc-chatbot-launcher:focus-visible {
+    outline: 2px solid var(--vc-accent) !important;
+    outline-offset: 4px;
+}
+
+.vc-chatbot-launcher svg {
+    width: 28px;
+    height: 28px;
+    fill: currentColor;
+}
+
+/* Chat Panel */
+.vc-chatbot-panel {
+    position: fixed;
+    bottom: 6rem;
+    right: 2rem;
+    width: 380px;
+    max-height: calc(100vh - 8rem);
+    height: 600px;
+    background-color: #fff;
+    border-radius: 4px;
+    box-shadow: 0 8px 24px rgba(15, 23, 42, 0.15);
+    display: flex;
+    flex-direction: column;
+    z-index: 1040;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    border: 1px solid var(--vc-border);
+}
+
+.vc-chatbot-panel.is-open {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translateY(0);
+}
+
+/* Chat Header */
+.vc-chatbot-header {
+    background-color: var(--vc-primary);
+    color: white;
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.vc-chatbot-title {
+    font-family: var(--vc-font-serif);
+    font-weight: 600;
+    margin: 0;
+    font-size: 1.1rem;
+    letter-spacing: 0.02em;
+}
+
+.vc-chatbot-close {
+    background: none;
+    border: none;
+    color: white;
+    opacity: 0.8;
+    cursor: pointer;
+    padding: 0.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.2s;
+    border-radius: 2px;
+}
+
+.vc-chatbot-close:hover {
+    opacity: 1;
+}
+
+.vc-chatbot-close:focus-visible {
+    outline: 2px solid var(--vc-accent) !important;
+    outline-offset: 2px;
+}
+
+.vc-chatbot-close svg {
+    width: 20px;
+    height: 20px;
+}
+
+/* Chat Messages */
+.vc-chatbot-messages {
+    flex-grow: 1;
+    overflow-y: auto;
+    padding: 1.5rem;
+    background-color: var(--vc-bg-surface);
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* Initial State / Welcome */
+.vc-chatbot-welcome {
+    text-align: center;
+    padding: 1.5rem 1rem;
+    color: var(--vc-text-muted);
+    font-size: 0.9rem;
+    border-bottom: 1px solid var(--vc-border);
+    margin-bottom: 0.5rem;
+}
+
+/* Individual Messages */
+.vc-chat-msg {
+    max-width: 85%;
+    padding: 0.75rem 1rem;
+    border-radius: 4px;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    word-wrap: break-word;
+}
+
+.vc-chat-msg.user {
+    align-self: flex-end;
+    background-color: var(--vc-primary);
+    color: white;
+    border-bottom-right-radius: 0;
+}
+
+.vc-chat-msg.assistant {
+    align-self: flex-start;
+    background-color: #fff;
+    color: var(--vc-text-main);
+    border: 1px solid var(--vc-border);
+    border-bottom-left-radius: 0;
+}
+
+/* Loading Indicator */
+.vc-chat-loading {
+    display: flex;
+    gap: 4px;
+    padding: 0.5rem;
+    align-self: flex-start;
+}
+
+.vc-chat-loading-dot {
+    width: 6px;
+    height: 6px;
+    background-color: var(--vc-text-muted);
+    border-radius: 50%;
+    animation: vcChatPulse 1.4s infinite ease-in-out both;
+}
+
+.vc-chat-loading-dot:nth-child(1) { animation-delay: -0.32s; }
+.vc-chat-loading-dot:nth-child(2) { animation-delay: -0.16s; }
+
+@keyframes vcChatPulse {
+    0%, 80%, 100% { transform: scale(0); }
+    40% { transform: scale(1); }
+}
+
+/* Disclaimer Banner */
+.vc-chatbot-disclaimer {
+    background-color: #fff5f5;
+    color: #c53030;
+    padding: 0.75rem 1.5rem;
+    font-size: 0.75rem;
+    text-align: center;
+    border-top: 1px solid #fed7d7;
+    display: none; /* Shown via JS */
+}
+
+/* Chat Input */
+.vc-chatbot-input-area {
+    padding: 1rem;
+    background-color: #fff;
+    border-top: 1px solid var(--vc-border);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.vc-chatbot-textarea-container {
+    display: flex;
+    gap: 0.5rem;
+    align-items: flex-end;
+}
+
+.vc-chatbot-textarea {
+    flex-grow: 1;
+    resize: none;
+    border: 1px solid var(--vc-border);
+    border-radius: 4px;
+    padding: 0.5rem;
+    font-family: inherit;
+    font-size: 0.95rem;
+    min-height: 44px; /* Accessible touch target */
+    max-height: 120px;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.vc-chatbot-textarea:focus {
+    border-color: var(--vc-primary);
+}
+
+.vc-chatbot-send {
+    background-color: var(--vc-primary);
+    color: white;
+    border: none;
+    width: 44px;
+    height: 44px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    flex-shrink: 0;
+}
+
+.vc-chatbot-send:hover:not(:disabled) {
+    background-color: #1a253c;
+}
+
+.vc-chatbot-send:focus-visible {
+    outline: 2px solid var(--vc-accent) !important;
+    outline-offset: 2px;
+}
+
+.vc-chatbot-send:disabled {
+    background-color: var(--vc-border);
+    cursor: not-allowed;
+    color: var(--vc-text-muted);
+}
+
+.vc-chatbot-send svg {
+    width: 20px;
+    height: 20px;
+    fill: currentColor;
+}
+
+.vc-chatbot-footer-text {
+    text-align: center;
+    font-size: 0.7rem;
+    color: var(--vc-text-muted);
+    margin: 0;
+}
+
+/* System Alerts inside Chat */
+.vc-chat-alert {
+    align-self: stretch;
+    text-align: center;
+    padding: 0.5rem;
+    font-size: 0.85rem;
+    border-radius: 4px;
+    margin: 0.5rem 0;
+}
+
+.vc-chat-alert-error {
+    background-color: #fff5f5;
+    color: #c53030;
+    border: 1px solid #fed7d7;
+}
+
+/* Mobile Responsive */
+@media (max-width: 576px) {
+    .vc-chatbot-panel {
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        height: 100%; /* Better to calculate dynamically in JS if possible, but 100% works if fixed */
+        max-height: 100%;
+        border-radius: 0;
+        border: none;
+    }
+    
+    .vc-chatbot-launcher {
+        bottom: 1.5rem;
+        right: 1.5rem;
+    }
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+    .vc-chatbot-panel {
+        transition: none;
+    }
+    .vc-chat-loading-dot {
+        animation: none;
+    }
+}

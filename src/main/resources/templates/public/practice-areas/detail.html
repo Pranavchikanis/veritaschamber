@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head :: head('Practice Area | Veritas Chambers')}"></head>
+<body class="d-flex flex-column min-vh-100" th:attr="data-slug=${slug}">
+    <a href="#main-content" class="skip-to-content">Skip to main content</a>
+    <div th:replace="~{fragments/header :: header}"></div>
+
+    <main id="main-content" class="flex-grow-1">
+        
+        <!-- Header -->
+        <section class="vc-section bg-light py-5">
+            <div class="container py-4">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item"><a href="/" class="text-decoration-none text-muted">Home</a></li>
+                        <li class="breadcrumb-item"><a href="/practice-areas" class="text-decoration-none text-muted">Practice Areas</a></li>
+                        <li class="breadcrumb-item active" aria-current="page" id="breadcrumb-title">Detail</li>
+                    </ol>
+                </nav>
+                <h1 class="display-5 fw-bold mb-3 mt-3" style="font-family: var(--vc-font-serif);" id="pa-title">Practice Area</h1>
+            </div>
+        </section>
+
+        <!-- Content -->
+        <section class="vc-section">
+            <div class="container py-5">
+                <div class="row">
+                    <div class="col-lg-8 vc-content-narrow" id="pa-content-container">
+                        <div class="text-center py-5" id="pa-loading">
+                            <div class="spinner-border text-primary" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                        </div>
+                        
+                        <div id="pa-content" class="d-none">
+                            <p class="lead text-muted mb-5" id="pa-short-desc">Overview</p>
+                            <div class="article-content" id="pa-long-desc"></div>
+                        </div>
+
+                        <div id="pa-error" class="vc-alert vc-alert-danger d-none">
+                            Practice area information is currently unavailable.
+                        </div>
+                    </div>
+                    
+                    <!-- Sidebar -->
+                    <div class="col-lg-3 offset-lg-1 mt-5 mt-lg-0">
+                        <div class="vc-card vc-card-body bg-light text-center border-0" style="position: sticky; top: 100px;">
+                            <h3 class="h5 mb-3">Discuss your case</h3>
+                            <p class="small text-muted mb-4">Contact our office to schedule a meeting regarding this matter.</p>
+                            <a href="/contact" class="btn btn-primary vc-btn-primary w-100 mb-3">Request Consultation</a>
+                            <a href="tel:+918983512124" class="text-decoration-none text-muted small"><i class="ph ph-phone me-1"></i> +91 89835 12124</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <div th:replace="~{fragments/footer :: footer}"></div>
+
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script defer th:src="@{/js/api.js}"></script>
+    <script defer th:src="@{/js/main.js}"></script>
+    <script defer th:src="@{/js/components/navigation.js}"></script>
+    <script defer th:src="@{/js/pages/practice-area-detail.js}"></script>
+</body>
+</html>

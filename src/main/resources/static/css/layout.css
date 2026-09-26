@@ -1,0 +1,98 @@
+/* 
+ * layout.css
+ * Header, Footer, and Structural Grids 
+ */
+
+/* Header & Navigation */
+.vc-header {
+  box-shadow: var(--vc-shadow-subtle);
+  transition: var(--vc-transition);
+}
+
+.vc-logo {
+  font-family: var(--vc-font-serif);
+  font-weight: 700;
+  font-size: 1.5rem;
+  color: var(--vc-primary) !important;
+  letter-spacing: -0.02em;
+}
+
+.vc-logo-footer {
+  font-family: var(--vc-font-serif);
+  font-weight: 700;
+  font-size: 1.75rem;
+  letter-spacing: -0.02em;
+}
+
+.navbar-nav .nav-link {
+  font-family: var(--vc-font-sans);
+  font-weight: 500;
+  color: var(--vc-text-main) !important;
+  margin: 0 0.5rem;
+  padding: 0.5rem 0;
+  border-bottom: 2px solid transparent;
+  transition: var(--vc-transition);
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+  color: var(--vc-primary) !important;
+  border-bottom-color: var(--vc-accent);
+}
+
+.vc-phone-cta {
+  color: var(--vc-primary);
+  text-decoration: none;
+  font-family: var(--vc-font-sans);
+  transition: var(--vc-transition);
+}
+
+.vc-phone-cta:hover {
+  color: var(--vc-accent);
+}
+
+/* Mobile Toggler */
+.navbar-toggler {
+  border: none;
+  border-radius: var(--vc-radius);
+}
+
+.navbar-toggler:focus {
+  box-shadow: none;
+  outline: 2px solid var(--vc-accent);
+}
+
+/* Footer */
+.vc-footer {
+  background-color: var(--vc-primary) !important;
+}
+
+.vc-footer-links a {
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  transition: var(--vc-transition);
+}
+
+.vc-footer-links a:hover {
+  color: var(--vc-accent);
+  padding-left: 4px;
+}
+
+/* Page Spacing */
+.vc-section {
+  padding-top: var(--vc-space-lg);
+  padding-bottom: var(--vc-space-lg);
+}
+
+@media (min-width: 992px) {
+  .vc-section {
+    padding-top: var(--vc-space-xl);
+    padding-bottom: var(--vc-space-xl);
+  }
+}
+
+.vc-content-narrow {
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}

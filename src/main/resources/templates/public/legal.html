@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head :: head('Legal Information | Veritas Chambers')}"></head>
+<body class="d-flex flex-column min-vh-100">
+    <a href="#main-content" class="skip-to-content">Skip to main content</a>
+    <div th:replace="~{fragments/header :: header}"></div>
+
+    <main id="main-content" class="flex-grow-1">
+        
+        <!-- Header -->
+        <section class="vc-section bg-light py-5">
+            <div class="container py-4 text-center">
+                <h1 class="display-5 fw-bold mb-3 text-capitalize" style="font-family: var(--vc-font-serif);" th:text="${#strings.replace(slug, '-', ' ')}">Legal Page</h1>
+            </div>
+        </section>
+
+        <!-- Content -->
+        <section class="vc-section">
+            <div class="container py-5 vc-content-narrow">
+                
+                <div class="vc-alert vc-alert-info mb-5">
+                    Legal terms are currently being updated and verified.
+                </div>
+
+                <div class="article-content text-muted" style="line-height: 1.8;">
+                    <p>Veritas Chambers ("we," "us," or "our") operates this website. This page informs you of our policies regarding the collection, use, and disclosure of personal data when you use our website.</p>
+                    
+                    <h2 class="h5 text-dark mt-4 fw-bold">1. Information Collection</h2>
+                    <p>When you submit a consultation request, we collect your name, email, phone number, and any message details you provide. This information is used strictly to communicate with you regarding legal services.</p>
+                    
+                    <h2 class="h5 text-dark mt-4 fw-bold">2. No Attorney-Client Relationship</h2>
+                    <p>The use of this website, including submitting inquiries, does not create an attorney-client relationship. Please do not submit confidential information until formal representation is established.</p>
+                    
+                    <h2 class="h5 text-dark mt-4 fw-bold">3. Data Security</h2>
+                    <p>We strive to use commercially acceptable means to protect your personal data, but remember that no method of transmission over the Internet is 100% secure.</p>
+                    
+                    <h2 class="h5 text-dark mt-4 fw-bold">4. Changes</h2>
+                    <p>We may update this policy from time to time. You are advised to review this page periodically for any changes.</p>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <div th:replace="~{fragments/footer :: footer}"></div>
+
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script defer th:src="@{/js/main.js}"></script>
+    <script defer th:src="@{/js/components/navigation.js}"></script>
+</body>
+</html>

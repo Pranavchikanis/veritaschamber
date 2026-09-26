@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head :: head('Contact Us | Veritas Chambers')}"></head>
+<body class="d-flex flex-column min-vh-100">
+    <a href="#main-content" class="skip-to-content">Skip to main content</a>
+    <div th:replace="~{fragments/header :: header}"></div>
+
+    <main id="main-content" class="flex-grow-1">
+        
+        <!-- Header -->
+        <section class="vc-section bg-dark text-white py-5" style="background-color: var(--vc-primary) !important;">
+            <div class="container py-4">
+                <h1 class="display-5 fw-bold mb-3" style="font-family: var(--vc-font-serif);">Contact Veritas Chambers</h1>
+                <p class="lead opacity-75" style="max-width: 600px;">
+                    Request a consultation or reach out to our office in Sangli.
+                </p>
+            </div>
+        </section>
+
+        <!-- Main Content -->
+        <section class="vc-section">
+            <div class="container py-5">
+                <div class="row gx-lg-5">
+                    
+                    <!-- Direct Info -->
+                    <div class="col-lg-5 mb-5 mb-lg-0">
+                        <div class="mb-5">
+                            <h2 class="h4 mb-4" style="font-family: var(--vc-font-serif);">Office Details</h2>
+                            
+                            <div class="d-flex mb-4">
+                                <div class="me-3 fs-5" style="color: var(--vc-accent);"><i class="ph ph-map-pin"></i></div>
+                                <div>
+                                    <h3 class="h6 fw-bold mb-1">Address</h3>
+                                    <p class="text-muted mb-0">
+                                        Opposite building of Vijay Nagar Court,<br>
+                                        below Aurum Films, Ground Floor,<br>
+                                        Sangli, Maharashtra
+                                    </p>
+                                </div>
+                            </div>
+                            
+                            <div class="d-flex mb-4">
+                                <div class="me-3 fs-5" style="color: var(--vc-accent);"><i class="ph ph-phone"></i></div>
+                                <div>
+                                    <h3 class="h6 fw-bold mb-1">Phone</h3>
+                                    <p class="mb-0"><a href="tel:+918983512124" class="text-decoration-none text-muted">+91 89835 12124</a></p>
+                                </div>
+                            </div>
+
+                        </div>
+                        
+                        <div class="bg-light p-4 rounded border-start border-3 border-primary" style="border-left-color: var(--vc-primary) !important;">
+                            <h3 class="h6 fw-bold text-uppercase mb-2" style="letter-spacing: 1px;">Please Note</h3>
+                            <p class="small text-muted mb-0">Submitting an inquiry via this website does not establish an attorney-client relationship. Please refrain from submitting confidential evidentiary documents until a formal consultation is scheduled.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Consultation Form -->
+                    <div class="col-lg-7">
+                        <div class="vc-card p-4 p-md-5 bg-white shadow-sm h-100 border-0 rounded" style="border-top: 4px solid var(--vc-primary) !important;">
+                            <h2 class="h4 mb-4" style="font-family: var(--vc-font-serif);">Request a Consultation</h2>
+                            
+                            <div id="formAlertSuccess" class="vc-alert vc-alert-success d-none mb-4">
+                                <strong>Request Received:</strong> Our office will contact you shortly to schedule your consultation.
+                            </div>
+                            <div id="formAlertError" class="vc-alert vc-alert-danger d-none mb-4">
+                                <strong>Error:</strong> <span id="formAlertErrorMessage">Unable to submit request. Please check your inputs.</span>
+                            </div>
+
+                            <form id="consultationForm">
+                                <div class="row g-3 mb-3">
+                                    <div class="col-md-6">
+                                        <label for="name" class="form-label fw-bold small text-muted">Full Name <span class="text-danger">*</span></label>
+                                        <input type="text" class="form-control" id="name" name="name" required>
+                                        <div class="invalid-feedback"></div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="phone" class="form-label fw-bold small text-muted">Phone Number <span class="text-danger">*</span></label>
+                                        <input type="tel" class="form-control" id="phone" name="phone" required>
+                                        <div class="invalid-feedback"></div>
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-3">
+                                    <label for="email" class="form-label fw-bold small text-muted">Email Address <span class="text-danger">*</span></label>
+                                    <input type="email" class="form-control" id="email" name="email" required>
+                                    <div class="invalid-feedback"></div>
+                                </div>
+                                
+                                <div class="row g-3 mb-3">
+                                    <div class="col-md-6">
+                                        <label for="preferredContactMethod" class="form-label fw-bold small text-muted">Preferred Contact Method</label>
+                                        <select class="form-select" id="preferredContactMethod" name="preferredContactMethod">
+                                            <option value="PHONE">Phone</option>
+                                            <option value="EMAIL">Email</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <label for="subject" class="form-label fw-bold small text-muted">Subject / Category</label>
+                                        <input type="text" class="form-control" id="subject" name="subject">
+                                    </div>
+                                </div>
+                                
+                                <div class="mb-4">
+                                    <label for="message" class="form-label fw-bold small text-muted">Brief Description of Legal Matter <span class="text-danger">*</span></label>
+                                    <textarea class="form-control" id="message" name="message" rows="4" placeholder="Do not include sensitive financial or evidentiary details." required></textarea>
+                                    <div class="invalid-feedback"></div>
+                                </div>
+                                
+                                <button type="submit" id="submitBtn" class="btn btn-primary vc-btn-primary w-100 py-3 d-flex align-items-center justify-content-center">
+                                    <span id="submitText">Submit Request</span>
+                                    <div id="submitSpinner" class="spinner-border spinner-border-sm ms-2 d-none" role="status">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <div th:replace="~{fragments/footer :: footer}"></div>
+
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script defer src="https://unpkg.com/@phosphor-icons/web"></script>
+    <script defer th:src="@{/js/api.js}"></script>
+    <script defer th:src="@{/js/main.js}"></script>
+    <script defer th:src="@{/js/components/navigation.js}"></script>
+    <script defer th:src="@{/js/pages/contact.js}"></script>
+</body>
+</html>

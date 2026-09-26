@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head :: head('Frequently Asked Questions | Veritas Chambers')}"></head>
+<body class="d-flex flex-column min-vh-100">
+    <a href="#main-content" class="skip-to-content">Skip to main content</a>
+    <div th:replace="~{fragments/header :: header}"></div>
+
+    <main id="main-content" class="flex-grow-1">
+        
+        <!-- Header -->
+        <section class="vc-section bg-light py-5">
+            <div class="container py-4 text-center">
+                <h1 class="display-5 fw-bold mb-3" style="font-family: var(--vc-font-serif);">Frequently Asked Questions</h1>
+                <p class="lead text-muted" style="max-width: 600px; margin: 0 auto;">
+                    Common inquiries regarding our practice, billing, and consultations.
+                </p>
+            </div>
+        </section>
+
+        <!-- FAQs Accordion -->
+        <section class="vc-section">
+            <div class="container py-5 vc-content-narrow">
+                
+                <div class="text-center py-5" id="faq-loading">
+                    <div class="spinner-border text-primary" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                    </div>
+                </div>
+
+                <div class="accordion vc-accordion" id="faqAccordion"></div>
+                
+                <div id="faq-empty" class="vc-empty-state d-none">
+                    <p class="mb-0">FAQs are currently being updated.</p>
+                </div>
+                
+                <div id="faq-error" class="alert alert-danger d-none">
+                    Failed to load FAQs. Please try again later.
+                </div>
+
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="vc-section bg-light border-top">
+            <div class="container py-5 text-center">
+                <h2 class="h3 mb-3">Still have questions?</h2>
+                <a href="/contact" class="btn btn-primary vc-btn-primary px-4 mt-2">Contact Our Office</a>
+            </div>
+        </section>
+
+    </main>
+
+    <div th:replace="~{fragments/footer :: footer}"></div>
+
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script defer th:src="@{/js/api.js}"></script>
+    <script defer th:src="@{/js/main.js}"></script>
+    <script defer th:src="@{/js/components/navigation.js}"></script>
+    <script defer th:src="@{/js/pages/faq.js}"></script>
+</body>
+</html>

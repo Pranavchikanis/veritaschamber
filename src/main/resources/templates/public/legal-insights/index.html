@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head :: head('Legal Insights | Veritas Chambers')}"></head>
+<body class="d-flex flex-column min-vh-100">
+    <a href="#main-content" class="skip-to-content">Skip to main content</a>
+    <div th:replace="~{fragments/header :: header}"></div>
+
+    <main id="main-content" class="flex-grow-1">
+        
+        <!-- Header -->
+        <section class="vc-section bg-light py-5">
+            <div class="container py-4 text-center">
+                <h1 class="display-5 fw-bold mb-3" style="font-family: var(--vc-font-serif);">Legal Insights</h1>
+                <p class="lead text-muted" style="max-width: 600px; margin: 0 auto;">
+                    Perspectives, legal updates, and thought leadership from Veritas Chambers.
+                </p>
+            </div>
+        </section>
+
+        <!-- Listing -->
+        <section class="vc-section">
+            <div class="container py-5">
+                
+                <div class="row g-4" id="articles-container">
+                    <div class="col-12 text-center py-5" id="articles-loading">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Pagination -->
+                <nav id="articles-pagination" class="mt-5 d-none" aria-label="Page navigation">
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item" id="btn-prev-page">
+                            <button class="page-link" tabindex="-1">Previous</button>
+                        </li>
+                        <li class="page-item" id="btn-next-page">
+                            <button class="page-link">Next</button>
+                        </li>
+                    </ul>
+                </nav>
+                
+                <div id="articles-empty" class="vc-empty-state d-none">
+                    <p class="mb-0">No legal insights are currently available. Please check back later.</p>
+                </div>
+                
+                <div id="articles-error" class="alert alert-danger d-none">
+                    Failed to load legal insights. Please try again later.
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <div th:replace="~{fragments/footer :: footer}"></div>
+
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script defer th:src="@{/js/api.js}"></script>
+    <script defer th:src="@{/js/main.js}"></script>
+    <script defer th:src="@{/js/components/navigation.js}"></script>
+    <script defer th:src="@{/js/pages/legal-insights.js}"></script>
+</body>
+</html>

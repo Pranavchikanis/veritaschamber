@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="~{fragments/head :: head('Veritas Chambers - Advocate Dhiraj Sawant - Legal Services in Sangli')}"></head>
+<body class="d-flex flex-column min-vh-100">
+    <a href="#main-content" class="skip-to-content">Skip to main content</a>
+    <div th:replace="~{fragments/header :: header}"></div>
+
+    <main id="main-content" class="flex-grow-1">
+        <!-- Hero Section -->
+        <section class="vc-hero bg-dark text-white py-5 d-flex align-items-center" style="min-height: 70vh; background-color: var(--vc-primary) !important;">
+            <div class="container py-5">
+                <div class="row">
+                    <div class="col-lg-8">
+                        <h1 class="display-3 fw-bold mb-4" style="font-family: var(--vc-font-serif);">Strategic Legal Counsel in Sangli</h1>
+                        <p class="lead mb-5 opacity-75" style="max-width: 600px;">
+                            An elite, disciplined legal practice grounded in truth, facts, integrity, and strategic counsel.
+                        </p>
+                        <div class="d-flex gap-3 flex-wrap">
+                            <a href="/contact" class="btn btn-primary vc-btn-primary btn-lg px-4">Request a Consultation</a>
+                            <a href="/practice-areas" class="btn btn-outline-light btn-lg px-4" style="border-color: rgba(255,255,255,0.5);">Explore Practice Areas</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Firm Introduction -->
+        <section class="vc-section bg-light">
+            <div class="container py-5">
+                <div class="row justify-content-center text-center">
+                    <div class="col-lg-8">
+                        <h2 class="h3 mb-4" style="color: var(--vc-accent);">Veritas Chambers</h2>
+                        <p class="lead text-muted mb-0" style="font-family: var(--vc-font-serif); font-size: 1.5rem; line-height: 1.8;">
+                            "A disciplined legal practice grounded in truth, precision, and integrity."
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Practice Areas Summary -->
+        <section class="vc-section">
+            <div class="container py-5">
+                <div class="d-flex justify-content-between align-items-end mb-5">
+                    <div>
+                        <h2 class="h2 mb-2">Practice Areas</h2>
+                        <p class="text-muted mb-0">Our core areas of legal expertise.</p>
+                    </div>
+                    <a href="/practice-areas" class="btn btn-link text-decoration-none px-0" style="color: var(--vc-primary);" aria-label="View all practice areas">View All &rarr;</a>
+                </div>
+                
+                <div id="practice-areas-container" class="row g-4">
+                    <!-- Loading State -->
+                    <div class="col-12 text-center py-5" id="practice-areas-loading">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="practice-areas-empty" class="vc-empty-state d-none">
+                    <p class="mb-0">Content is currently being updated. Please check back later.</p>
+                </div>
+                <div id="practice-areas-error" class="alert alert-danger d-none">
+                    Failed to load practice areas. Please try again later.
+                </div>
+            </div>
+        </section>
+
+        <!-- Lawyer Snippet -->
+        <section class="vc-section bg-light">
+            <div class="container py-5">
+                <div class="row align-items-center" id="lawyer-profile-container">
+                    <!-- Loading State -->
+                    <div class="col-12 text-center py-5" id="lawyer-profile-loading">
+                        <div class="spinner-border text-primary" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                    </div>
+                </div>
+                <div id="lawyer-profile-error" class="alert alert-danger d-none">
+                    Failed to load lawyer profile.
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Strip -->
+        <section class="vc-section" style="background-color: var(--vc-primary); color: white;">
+            <div class="container py-5 text-center">
+                <h2 class="h3 mb-4">Securely request a consultation</h2>
+                <p class="lead mb-4 opacity-75">Our office is located opposite the building of Vijay Nagar Court, below Aurum Films, Ground Floor, Sangli.</p>
+                <div class="d-flex justify-content-center gap-4 flex-wrap">
+                    <a href="tel:+918983512124" class="btn btn-light btn-lg px-4" style="color: var(--vc-primary);">Call: +91 89835 12124</a>
+                    <a href="/contact" class="btn btn-outline-light btn-lg px-4" style="border-color: rgba(255,255,255,0.5);">Contact Office</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <div th:replace="~{fragments/footer :: footer}"></div>
+
+    <script defer src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+    <script defer th:src="@{/js/api.js}"></script>
+    <script defer th:src="@{/js/main.js}"></script>
+    <script defer th:src="@{/js/components/navigation.js}"></script>
+    <script defer th:src="@{/js/pages/home.js}"></script>
+</body>
+</html>

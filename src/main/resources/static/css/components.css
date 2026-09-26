@@ -1,0 +1,126 @@
+/* 
+ * components.css
+ * Buttons, Cards, Forms, and Notifications
+ */
+
+/* Buttons */
+.btn {
+  border-radius: var(--vc-radius);
+  font-weight: 500;
+  padding: 0.6rem 1.5rem;
+  transition: var(--vc-transition);
+}
+
+.vc-btn-primary {
+  background-color: var(--vc-primary);
+  border-color: var(--vc-primary);
+  color: #fff;
+}
+
+.vc-btn-primary:hover,
+.vc-btn-primary:focus {
+  background-color: #1a253c; /* Slightly lighter navy */
+  border-color: #1a253c;
+  color: #fff;
+}
+
+.vc-btn-secondary {
+  background-color: transparent;
+  border-color: var(--vc-primary);
+  color: var(--vc-primary);
+}
+
+.vc-btn-secondary:hover,
+.vc-btn-secondary:focus {
+  background-color: var(--vc-primary);
+  color: #fff;
+}
+
+.btn-outline-light:hover {
+  background-color: var(--vc-accent);
+  border-color: var(--vc-accent);
+  color: var(--vc-primary);
+}
+
+/* Cards */
+.vc-card {
+  background-color: #fff;
+  border: 1px solid var(--vc-border);
+  border-radius: var(--vc-radius);
+  transition: var(--vc-transition);
+}
+
+.vc-card:hover {
+  box-shadow: var(--vc-shadow-subtle);
+  transform: translateY(-2px);
+}
+
+.vc-card-body {
+  padding: 2rem;
+}
+
+/* Forms */
+.form-control,
+.form-select {
+  border-radius: var(--vc-radius);
+  border: 1px solid var(--vc-border);
+  padding: 0.75rem 1rem;
+  transition: var(--vc-transition);
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--vc-primary);
+  box-shadow: 0 0 0 0.2rem rgba(15, 23, 42, 0.1);
+}
+
+.form-label {
+  font-weight: 500;
+  color: var(--vc-primary);
+  margin-bottom: 0.5rem;
+}
+
+/* Validation States */
+.form-control.is-invalid {
+  border-color: #dc3545;
+}
+.form-control.is-invalid:focus {
+  box-shadow: 0 0 0 0.2rem rgba(220, 53, 69, 0.25);
+}
+
+/* Alerts / Error States */
+.vc-alert {
+  border-radius: var(--vc-radius);
+  border: none;
+  padding: 1rem 1.5rem;
+}
+
+.vc-alert-danger {
+  background-color: #fff5f5;
+  color: #c53030;
+  border-left: 4px solid #c53030;
+}
+
+.vc-alert-success {
+  background-color: #f0fdf4;
+  color: #15803d;
+  border-left: 4px solid #15803d;
+}
+
+/* Empty States */
+.vc-empty-state {
+  text-align: center;
+  padding: 4rem 2rem;
+  background-color: #fff;
+  border: 1px dashed var(--vc-border);
+  border-radius: var(--vc-radius);
+  color: var(--vc-text-muted);
+}
+
+/* Loading States */
+.vc-spinner {
+  width: 1.5rem;
+  height: 1.5rem;
+  border-width: 0.15em;
+  color: var(--vc-primary);
+}

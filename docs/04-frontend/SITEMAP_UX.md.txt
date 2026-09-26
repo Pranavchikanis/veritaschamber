@@ -1,0 +1,628 @@
+```markdown
+# VERITAS CHAMBERS: SITEMAP & UX ARCHITECTURE
+**Target Agent:** Google Antigravity
+**Document Scope:** Information Architecture, Sitemap, User Journeys, and Page-Level UX
+
+================================================================================
+## 1. UX OBJECTIVE
+================================================================================
+The UX must minimize friction for visitors attempting to:
+1. Understand who Veritas Chambers is and who Dhiraj Sawant is.
+2. Evaluate professional credibility.
+3. Determine available legal services (Practice Areas).
+4. Locate the office in Sangli.
+5. Securely and easily request a consultation or make contact.
+
+================================================================================
+## 2. UX PRINCIPLES
+================================================================================
+1. **Clarity over Cleverness:** Navigation and labels must be immediately understood.
+2. **Trust before Conversion:** Establish credibility before asking for contact info.
+3. **Minimal Cognitive Load:** Do not overwhelm users with walls of legal text.
+4. **Quiet Authority:** A calm, controlled, and professional digital environment.
+5. **Short Paths to Contact:** Contact mechanisms must be 1-2 clicks away.
+6. **Strong Accessibility:** Mandatory WCAG 2.2 AA-oriented baseline.
+7. **Mobile-First Usability:** Content must stack logically; phone numbers must be actionable.
+8. **No Misleading Patterns:** Zero fake urgency, zero dark patterns, zero manipulative CTAs.
+
+================================================================================
+## 3. PRIMARY USER TYPES
+================================================================================
+*   **User Type A (Individual/Family):** Needs to verify if the firm handles their issue and initiate contact.
+*   **User Type B (Business/Professional):** Needs to assess firm credibility and legal capabilities.
+*   **User Type C (Existing Client):** Needs to find office location, hours, or direct phone number.
+*   **User Type D (General Visitor):** Wants to read Legal Insights or firm philosophy.
+*   **User Type E (Administrator):** Needs to securely manage content and review inquiries.
+
+================================================================================
+## 4. USER INTENT MODEL
+================================================================================
+The IA must instantly satisfy these intents:
+*   *"Do they handle my type of case?"* -> Practice Areas.
+*   *"Who is Dhiraj Sawant?"* -> About / Lawyer Profile.
+*   *"Where are they located?"* -> Contact / Footer.
+*   *"I need to talk to a lawyer now."* -> Header Phone CTA / Consultation Form.
+
+================================================================================
+## 5. INFORMATION ARCHITECTURE
+================================================================================
+```text
+Home (Public)
+├── About
+├── Practice Areas
+│   └── Practice Area Detail (Slug)
+├── Legal Insights
+│   └── Article Detail (Slug)
+├── FAQ
+├── Contact (Includes Consultation capability)
+├── Privacy Policy
+├── Terms & Conditions
+└── Legal Disclaimer
+
+Admin (Protected)
+├── Login
+├── Dashboard
+├── Lawyer Profile Management
+├── Practice Areas Management
+├── Articles (CMS)
+├── FAQs Management
+├── Consultations Inbox
+├── Contact Messages Inbox
+└── Settings
+
+```
+
+================================================================================
+
+## 6. SITEMAP
+
+================================================================================
+*Refer to the Route Table (Section 51) and Page Specification Table (Section 52) for detailed access, parent, and CTA mappings.*
+
+================================================================================
+
+## 7. URL STRUCTURE
+
+================================================================================
+Clean, stable, human-readable routes. No `.html` extensions. No exposed DB IDs in public routes where slugs are appropriate.
+
+**Public Routes:**
+
+* `/`
+* `/about`
+* `/practice-areas`
+* `/practice-areas/[slug]`
+* `/legal-insights`
+* `/legal-insights/[slug]`
+* `/faq`
+* `/contact` (Houses both contact info and consultation request)
+* `/legal/[slug]` (Privacy, Terms, Disclaimer)
+
+**Admin Routes:**
+
+* `/admin/login`
+* `/admin/dashboard`
+* `/admin/consultations`
+* `/admin/articles`
+
+================================================================================
+
+## 8. GLOBAL NAVIGATION
+
+================================================================================
+
+* **Desktop:** Clean horizontal list.
+`Home | About | Practice Areas | Legal Insights | FAQ | Contact`
+* **Mobile:** Hamburger menu, opening a clean full-screen or slide-out drawer.
+* **Active State:** Distinct visual indicator (e.g., subtle underline) for the current page.
+
+================================================================================
+
+## 9. HEADER UX
+
+================================================================================
+
+* **Left:** Veritas Chambers Logo (Links to `/`).
+* **Center/Right:** Global Navigation.
+* **Far Right:** Primary CTA (`Call Now: +91 89835 12124` or `Request Consultation`).
+* **Scroll Behavior:** Sticky header to allow immediate access to navigation/phone number on long pages. Must shrink slightly to preserve vertical screen space.
+
+================================================================================
+
+## 10. HOMEPAGE UX
+
+================================================================================
+**Hierarchy:**
+
+1. **Hero:** Identity, Trust, and Next Action.
+2. **Firm Introduction:** High-level "Veritas" philosophy.
+3. **Practice Areas (Summary):** Grid of top services leading to details.
+4. **Lawyer Snippet:** Brief credibility builder for Dhiraj Sawant -> Link to About.
+5. **Insights / FAQ (Summary):** Demonstrates intellectual rigor.
+6. **Consultation CTA / Contact Strip:** Office location and direct contact route.
+
+================================================================================
+
+## 11. HERO UX
+
+================================================================================
+
+* **Primary Message:** Clear positioning (e.g., "Strategic Legal Counsel in Sangli").
+* **Supporting Message:** Emphasizing Truth, Integrity, Precision.
+* **Primary CTA:** `Request a Consultation`
+* **Secondary CTA:** `Explore Practice Areas`
+* **Visual:** Professional architectural or office imagery. No generic scales of justice or gavels.
+
+================================================================================
+
+## 12. ABOUT PAGE UX
+
+================================================================================
+
+* **Structure:** Introduction -> Dhiraj Sawant Profile -> Credentials -> Philosophy -> Contact CTA.
+* **Constraint:** Credentials are `[MOCK]`. The UX must support a clean layout that will not break when the user eventually replaces placeholders with a short or long verified biography.
+
+================================================================================
+
+## 13. PRACTICE AREAS UX (Listing)
+
+================================================================================
+
+* **Layout:** Clean grid of cards.
+* **Card Content:** Icon/Image (Optional), Title, Short Description, `Learn More` link.
+* **Constraint:** Practice areas are `[MOCK / TO BE CONFIRMED]`. Do not visually hardcode specific specialties into the layout skeleton.
+
+================================================================================
+
+## 14. PRACTICE AREA DETAIL UX
+
+================================================================================
+
+* **Structure:** Breadcrumb -> H1 Title -> Overview -> Specific Services -> Related FAQs -> Consultation CTA.
+* **Consistency:** The layout must be highly repeatable for any future practice area.
+
+================================================================================
+
+## 15. LEGAL INSIGHTS UX (Listing)
+
+================================================================================
+
+* **Layout:** Editorial grid or list.
+* **Card Content:** Date, Category, Title, Excerpt, `Read Article` link.
+* **Pagination:** Required if total articles exceed 10.
+
+================================================================================
+
+## 16. ARTICLE DETAIL UX
+
+================================================================================
+
+* **Structure:** Breadcrumb -> H1 Title -> Date/Category Meta -> Article Body -> Legal Disclaimer -> Contact CTA.
+* **UX Rule:** Maximum content width of ~800px to maintain reading comfort. Do not interrupt paragraphs with aggressive CTAs.
+
+================================================================================
+
+## 17. FAQ UX
+
+================================================================================
+
+* **Structure:** Accessible Accordion/Disclosure pattern.
+* **Interaction:** Clicking a question expands the answer. Only one answer should ideally be open at a time to reduce scrolling overhead.
+
+================================================================================
+
+## 18. CONTACT PAGE UX
+
+================================================================================
+
+* **Structure:** 2-Column Desktop / Stacked Mobile.
+* **Left/Top:** Direct Info (Phone, `[MOCK EMAIL]`, Address, `[MOCK OFFICE HOURS]`).
+* **Right/Bottom:** Integrated Contact/Consultation Form.
+* **Location:** Embedded Map or clear textual directions to the Vijay Nagar Court location.
+
+================================================================================
+
+## 19. CONSULTATION UX
+
+================================================================================
+
+* **Entry:** Via Header CTA, Hero CTA, or Practice Area pages.
+* **Expectation Management:** A clear, visible disclaimer stating that submitting the form does NOT establish an attorney-client relationship.
+
+================================================================================
+
+## 20. CONTACT/CONSULTATION FORM UX
+
+================================================================================
+
+* **Fields:** Name (Required), Phone (Required), Email (Required), Subject/Category (Optional), Message (Required).
+* **UX Rule:** Do not ask for highly sensitive evidentiary details. Keep friction low.
+* **Submit Button:** Must clearly indicate loading state (spinner/disabled) to prevent double submissions.
+
+================================================================================
+
+## 21. FORM VALIDATION UX
+
+================================================================================
+
+* **Client-Side:** Immediate visual feedback. Red outlines/text for errors, green for success.
+* **Server-Side:** Authoritative fallback. If the API returns a 400 validation error, the UI must map the error to the corresponding input field cleanly.
+
+================================================================================
+
+## 22. SUCCESS / ERROR UX
+
+================================================================================
+
+* **Success:** Replace form with a calm confirmation message: *"Your request has been received. Our office will contact you shortly."*
+* **Error:** Plain-language banner: *"Unable to submit request. Please check your inputs or call the office directly."* NEVER expose stack traces.
+
+================================================================================
+
+## 23. OFFICE LOCATION UX
+
+================================================================================
+
+* **Address Display:** Must be presented exactly as verified: "Opposite building of Vijay Nagar Court, below Aurum Films, Ground Floor, Sangli."
+* **Map:** If an iframe map is used, it must not disrupt mobile scrolling (disable pointer-events until clicked).
+
+================================================================================
+
+## 24. MOBILE CONTACT UX
+
+================================================================================
+
+* **Click-to-Call:** The phone number (+91 89835 12124) MUST be an active `<a href="tel:+918983512124">` link.
+* **Visibility:** The phone icon or number must remain visible or easily accessible in the mobile header or a sticky bottom action bar.
+
+================================================================================
+
+## 25. FOOTER UX
+
+================================================================================
+
+* **Structure:** 3 or 4 columns on Desktop, stacked on Mobile.
+* **Sections:** Veritas Chambers Logo/Brief Intro | Quick Links (Nav) | Contact Info | Legal Links.
+* **Bottom Strip:** Copyright year, Legal Disclaimer link, Privacy Policy link.
+
+================================================================================
+
+## 26. BREADCRUMB UX
+
+================================================================================
+
+* **Usage:** Mandatory on Practice Area Detail and Article Detail pages.
+* **Format:** `Home > Practice Areas > [Current Area]`
+* **Accessibility:** Use `<nav aria-label="breadcrumb">`.
+
+================================================================================
+
+## 27. SEARCH UX
+
+================================================================================
+
+* **Current Scope:** NOT APPROVED. Site-wide search is deferred to avoid over-engineering. Navigation and clear IA solve discoverability for the MVP.
+
+================================================================================
+
+## 28. FILTERING / SORTING UX
+
+================================================================================
+
+* **Current Scope:** Optional filtering by Category on the Legal Insights list page via simple pill buttons or a select dropdown.
+
+================================================================================
+
+## 29. PAGINATION
+
+================================================================================
+
+* **Usage:** Legal Insights and Admin Data Tables.
+* **UI:** Standard Previous/Next and numbered page buttons. Ensure large enough touch targets on mobile.
+
+================================================================================
+
+## 30. EMPTY STATES
+
+================================================================================
+
+* **Usage:** When no Articles or FAQs are currently published.
+* **UI:** Calm, branded message. *"Content is currently being updated. Please check back later."* Do not display broken grids.
+
+================================================================================
+
+## 31. 404 UX
+
+================================================================================
+
+* **UI:** Professional layout maintaining the header and footer.
+* **Message:** "Page Not Found."
+* **Action:** Provide a clear `Return to Homepage` button and the office phone number as a fallback. No humorous/playful language.
+
+================================================================================
+
+## 32. ACCESS CONTROL UX
+
+================================================================================
+
+* **Public:** Standard navigation.
+* **Admin Access Attempt:** If a public user navigates to `/admin`, they are immediately redirected to `/admin/login`.
+* **Auth Expiry:** If an admin's session expires while working, the UX must cleanly intercept the 401 error, notify the user, and redirect to login.
+
+================================================================================
+
+## 33. ADMIN UX
+
+================================================================================
+
+* **Priority:** Efficiency, readability, and data management.
+* **Layout:** Sidebar navigation (Left), Content area (Right).
+* **Visuals:** Retains brand colors but uses standard Bootstrap utility layouts for maximum functional density.
+
+================================================================================
+
+## 34. ADMIN NAVIGATION
+
+================================================================================
+
+* **Links:** Dashboard | Inbox (Consultations/Messages) | Practice Areas | Articles | FAQs | Settings | Logout.
+* **Active State:** High-contrast background on the active sidebar item.
+
+================================================================================
+
+## 35. USER FLOWS
+
+================================================================================
+
+* **Flow 1 (Visitor → Consultation):** Home -> Evaluates Credibility via Practice Areas/About -> Clicks Header CTA -> `/contact` -> Fills Form -> Sees Success Message.
+* **Flow 2 (Mobile → Call):** Lands on Home -> Taps Phone Number in Sticky Header -> Native Phone App Opens.
+* **Flow 3 (Admin → Publish Article):** `/admin/login` -> Authenticates -> Dashboard -> Articles -> Create New -> Fills WYSIWYG Editor -> Clicks Publish -> Article appears on public `/legal-insights`.
+
+================================================================================
+
+## 36. CONVERSION FUNNEL
+
+================================================================================
+Awareness (Homepage) -> Credibility (Lawyer Bio) -> Relevance (Practice Area Detail) -> Action (Contact/Consultation).
+*Friction Removal:* Never force a user to create an account to contact the firm.
+
+================================================================================
+
+## 37. CTA HIERARCHY
+
+================================================================================
+
+* **Primary CTA:** `Call: +91 89835 12124` or `Request Consultation`. (Solid button, highest contrast).
+* **Secondary CTA:** `Explore Practice Areas` or `Read More`. (Outline or muted button).
+* **Text Links:** Used for inline contextual navigation.
+
+================================================================================
+
+## 38. CROSS-LINKING
+
+================================================================================
+
+* **Practice Areas -> Insights:** Display a "Related Articles" section at the bottom of Practice Area details if tags match.
+* **Insights -> Practice Areas:** Mention relevant services inside the article and link to them.
+
+================================================================================
+
+## 39. SEO-AWARE INFORMATION ARCHITECTURE
+
+================================================================================
+
+* Every public page has a distinct, indexable purpose.
+* No duplicate "location" doorway pages. Sangli presence is established on the Contact and Home pages.
+* H1 is strictly reserved for the single main page title.
+
+================================================================================
+
+## 40. ACCESSIBILITY UX
+
+================================================================================
+
+* **Focus Order:** Logical DOM ordering (Header -> Main Content -> Footer).
+* **Skip Link:** Provide a visually hidden `Skip to Main Content` link for keyboard users.
+* **Aria:** Use `aria-expanded` for the mobile menu and FAQs. Use `aria-invalid` on form inputs with errors.
+
+================================================================================
+
+## 41. RESPONSIVE UX
+
+================================================================================
+
+* **Mobile (< 768px):** Elements stack vertically. Typography scales down. Sidebars become off-canvas menus.
+* **Tablet (768px - 992px):** 2-column grids permitted where space allows.
+* **Desktop (> 992px):** Full multi-column grid, generous whitespace, horizontal navigation.
+
+================================================================================
+
+## 42. CONTENT PRIORITIZATION
+
+================================================================================
+**Example (Homepage on Mobile):**
+
+* *P0 (Top):* Brand Logo, Hamburger Menu, Hero Message, Phone CTA.
+* *P1 (Scroll):* Practice Areas summary, Lawyer Bio snippet.
+* *P2 (Bottom):* FAQs, Latest Articles.
+
+================================================================================
+
+## 43. PROGRESSIVE DISCLOSURE
+
+================================================================================
+
+* Use excerpts for Articles and Practice Areas on listing pages to prevent endless scrolling, forcing users to click `Read More` for full depth.
+* Use Accordions for FAQs.
+
+================================================================================
+
+## 44. MODALS / DRAWERS
+
+================================================================================
+
+* **Public Site:** Avoid modals entirely to prevent mobile UX frustration. Forms should live on dedicated pages.
+* **Admin Site:** Modals permitted for destructive action confirmations ("Are you sure you want to delete this article?").
+
+================================================================================
+
+## 45. NOTIFICATION UX
+
+================================================================================
+
+* **Toast Notifications (Admin):** Used for "Saved Successfully" or "Status Updated." Must auto-dismiss after 3-5 seconds.
+* **Inline Alerts (Public):** Form errors/success must appear directly above or below the form, not as floating toasts, to guarantee visibility.
+
+================================================================================
+
+## 46. PERFORMANCE-AWARE UX
+
+================================================================================
+
+* Zero auto-playing videos.
+* System fonts or a maximum of two web fonts.
+* No heavy JavaScript scroll-jacking. The page must scroll natively.
+
+================================================================================
+
+## 47. LEGAL WEBSITE UX ETHICS
+
+================================================================================
+
+* **PROHIBITED:** Fake urgency timers, manufactured pop-up notifications ("Someone just booked a consultation!"), fake badges, unverifiable success metrics.
+* Mock placeholders during development must be explicitly labeled so they are not accidentally deployed as fake credibility markers.
+
+================================================================================
+
+## 48. CONTENT PLACEHOLDER STRATEGY
+
+================================================================================
+The UX layout must gracefully accommodate `[MOCK]` values for the Domain, Email, Office Hours, Lawyer Credentials, and Practice Areas. If an image is missing, the layout must collapse cleanly rather than displaying a broken image icon.
+
+================================================================================
+
+## 49. FUTURE EXPANSION
+
+================================================================================
+The IA is designed so that adding new Practice Areas or Articles simply requires the Admin to create a new database entry, which automatically populates the respective grid listing and creates the detail slug route without code changes.
+
+================================================================================
+
+## 50. CURRENT VS FUTURE SCOPE
+
+================================================================================
+
+* **CURRENT:** Core Pages (Home, About, Practice Areas, Insights, Contact, Legal), Admin Dashboard, CMS, Inbox.
+* **OPTIONAL:** Testimonial Carousel (Requires verification of Bar Council rules).
+* **FUTURE (Deferred):** Client Portal, Document Uploads, Search, Calendar Sync, CRM Integrations.
+
+================================================================================
+
+## 51. ROUTE TABLE
+
+================================================================================
+
+| Route | Page | Access | Purpose | Primary CTA | Status |
+| --- | --- | --- | --- | --- | --- |
+| `/` | Home | Public | Brand establishment | Contact/Consult | APPROVED |
+| `/about` | About/Profile | Public | Lawyer credibility | Contact | APPROVED |
+| `/practice-areas` | PA Directory | Public | List services | Learn More | APPROVED |
+| `/practice-areas/[slug]` | PA Detail | Public | Service details | Consult | APPROVED |
+| `/legal-insights` | Articles | Public | Thought leadership | Read Article | APPROVED |
+| `/legal-insights/[slug]` | Article Detail | Public | Deep read | Consult | APPROVED |
+| `/faq` | FAQ | Public | Operational info | Contact | APPROVED |
+| `/contact` | Contact & Form | Public | Intake & Location | Submit | APPROVED |
+| `/legal/[slug]` | Disclaimers | Public | Compliance | None | APPROVED |
+| `/admin/login` | Login | Public | Auth entry | Login | APPROVED |
+| `/admin/*` | Dashboard/CMS | Admin | Content/Inquiries | Various | APPROVED |
+
+================================================================================
+
+## 52. PAGE SPECIFICATION TABLE
+
+================================================================================
+
+| Page | Primary User | Primary Intent | Primary Content | Primary CTA | Access | Priority |
+| --- | --- | --- | --- | --- | --- | --- |
+| Home | All | Discovery | Hero, Bio, PAs | Consult | Public | P0 |
+| About | A, B | Due Diligence | Bio, Credentials | Contact | Public | P1 |
+| PA Detail | A, B | Relevance Check | Legal Service Data | Consult | Public | P0 |
+| Contact | A, B, C | Communication | Address, Form, Map | Submit | Public | P0 |
+| Article | D | Research | Legal Insight Text | Contact | Public | P2 |
+| Admin | E | Management | Data Tables, Forms | Save | Admin | P0 |
+
+================================================================================
+
+## 53. NAVIGATION MATRIX
+
+================================================================================
+
+| Page | In Header Nav? | In Footer Nav? | Has Breadcrumb? | Contextual Links From |
+| --- | --- | --- | --- | --- |
+| Home | Yes (Logo) | Yes (Logo) | No | All Pages |
+| About | Yes | Yes | No | Home |
+| Practice Areas | Yes | Yes | No | Home |
+| PA Detail | No | No | Yes | Practice Areas, Home |
+| Legal Insights | Yes | Yes | No | Home |
+| Article Detail | No | No | Yes | Legal Insights |
+| FAQ | Yes | Yes | No | Home |
+| Contact | Yes (Button) | Yes | No | All Pages |
+| Legal (Privacy) | No | Yes | No | Footer Only |
+
+================================================================================
+
+## 54. USER FLOW TABLE
+
+================================================================================
+
+| Flow | Starting Point | Steps | Conversion Goal | Important UX Req |
+| --- | --- | --- | --- | --- |
+| Intake | Home | Home -> Contact -> Fill Form | Submit Consultation | Clear validation errors |
+| Phone | Mobile Home | Header -> Tap Phone Icon | Native Call initiated | `tel:` link is active |
+| Admin Edit | `/admin/login` | Login -> Practice Areas -> Edit -> Save | DB Update | Success toast appears |
+
+================================================================================
+
+## 55. UX ACCEPTANCE CRITERIA
+
+================================================================================
+
+* [ ] Primary CTA (Call/Consult) is visible without scrolling on mobile and desktop.
+* [ ] Navigation hamburger menu operates smoothly on mobile without trapping focus.
+* [ ] Forms cannot be submitted with empty required fields.
+* [ ] Form submissions present clear, non-technical success/error messages.
+* [ ] Breadcrumbs accurately reflect the site hierarchy.
+* [ ] No horizontal scrolling/overflow occurs on mobile devices.
+* [ ] Unauthenticated attempts to access `/admin` cleanly redirect to `/admin/login`.
+
+================================================================================
+
+## 56. ANTIGRAVITY IMPLEMENTATION RULES
+
+================================================================================
+Before generating HTML/JS, Google Antigravity MUST:
+
+1. Verify the requested page exists in the Route Table (Section 51).
+2. Apply the exact Information Hierarchy for that page type.
+3. Ensure no unapproved pages or speculative features (like Site Search or Live Chat) are injected.
+4. Strictly segregate Admin views from Public views.
+5. Use Semantic HTML (`<main>`, `<nav>`, `<section>`) and Bootstrap 5 grid classes to ensure responsive, accessible layouts automatically.
+
+================================================================================
+
+## 57. DOCUMENT OWNERSHIP
+
+================================================================================
+`SITEMAP_UX.md` is the authoritative source for the Information Architecture, URL routes, Navigation structure, and Page-level user experience.
+It does NOT own visual design (`BRAND_AND_UI.md`), backend routing logic (`API_CONTRACTS.md`), or product scope (`PRD_OVERVIEW.md`). In the event of a conflict regarding what a page is supposed to achieve, the PRD wins. In conflicts regarding how it achieves it structurally, this document wins.
+
+================================================================================
+
+## 58. DOCUMENT MAINTENANCE
+
+================================================================================
+Update this document whenever a page is added/removed to the scope, a URL route changes, the navigation structure is modified, or a major user flow/conversion path is altered. Do not update it for minor UI/CSS tweaks.
+
+```
+
+```
