@@ -12,19 +12,31 @@ import org.springframework.context.annotation.Profile;
 public class DataSeeder {
 
     @Bean
-    @Profile("!prod") // Never run this in production
+    // @Profile("!prod") // Temporarily enabled for production seeding
     CommandLineRunner initMockData(
             PracticeAreaRepository practiceAreaRepository,
             LawyerProfileRepository lawyerProfileRepository,
             ArticleCategoryRepository articleCategoryRepository,
             ArticleRepository articleRepository,
-            FaqRepository faqRepository) {
+            FaqRepository faqRepository,
+            AdminUserRepository adminUserRepository,
+            org.springframework.security.crypto.password.PasswordEncoder passwordEncoder) {
         
         return args -> {
             if (practiceAreaRepository.count() == 0) {
                 createPracticeArea(practiceAreaRepository, "Civil Litigation", "civil-litigation", "Strategic counsel for complex civil disputes and property matters.");
                 createPracticeArea(practiceAreaRepository, "Corporate Law", "corporate-law", "Comprehensive legal advisory for business formation, compliance, and disputes.");
                 createPracticeArea(practiceAreaRepository, "Family Law", "family-law", "Discreet and compassionate representation for sensitive family matters.");
+            }
+
+            // Seed Admin User
+            if (adminUserRepository.count() == 0) {
+                AdminUser admin = new AdminUser();
+                admin.setEmail("admin@veritaschambers.com");
+                admin.setName("Admin");
+                admin.setPasswordHash(passwordEncoder.encode("admin123"));
+                admin.setRole(com.veritaschambers.entity.enums.Role.ROLE_ADMIN);
+                adminUserRepository.save(admin);
             }
 
             // Seed Lawyer Profile
