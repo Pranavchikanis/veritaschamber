@@ -8,7 +8,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "ai_knowledge_records", indexes = {
+@Table(name = "vc_ai_knowledge_records", indexes = {
         @Index(name = "idx_knowledge_verification", columnList = "verification_status, is_active")
 })
 public class AiKnowledgeRecord {

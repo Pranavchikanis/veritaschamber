@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 @Entity
-@Table(name = "consultation_requests", indexes = {
+@Table(name = "vc_consultation_requests", indexes = {
         @Index(name = "idx_consult_status", columnList = "status")
 })
 public class ConsultationRequest {

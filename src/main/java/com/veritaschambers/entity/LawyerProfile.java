@@ -7,7 +7,7 @@ import org.hibernate.annotations.UpdateTimestamp;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "lawyer_profiles")
+@Table(name = "vc_lawyer_profiles")
 public class LawyerProfile {
 
     @Id
